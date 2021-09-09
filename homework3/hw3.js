@@ -8,13 +8,17 @@ Array.prototype.myFilter = function (fn, context) {
     return newFilteredArr
 }
 
-const createDebounceFunction = (fn, ms) => {
+const createDebouncedFunction = (fn, ms) => {
     let timeout;
     return function () {
-        const fnCall = () => { fn.apply(this, arguments) }
+        if (timeout) {
+            clearTimeout(timeout);
+            timeout = null;
+        }
 
-        clearTimeout(timeout);
-
-        timeout = setTimeout(fnCall, ms)
-    };
+        timeout = setTimeout(function () {
+            fn();
+            timeout = null;
+        }, ms);
+    }
 }
