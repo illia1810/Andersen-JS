@@ -13,12 +13,8 @@ const createDebounceFunction = (fn, ms) => {
     return function () {
         if (timeout) {
             clearTimeout(timeout);
-            timeout = null;
         }
 
-        timeout = setTimeout(function () {
-            fn();
-            timeout = null;
-        }, ms);
+        timeout = setTimeout(fn, ms);
     }
 }
