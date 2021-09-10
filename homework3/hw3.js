@@ -8,7 +8,7 @@ Array.prototype.myFilter = function (fn, context) {
     return newFilteredArr
 }
 
-const createDebouncedFunction = (fn, ms) => {
+const createDebounceFunction = (fn, ms) => {
     let timeout;
     return function () {
         if (timeout) {
