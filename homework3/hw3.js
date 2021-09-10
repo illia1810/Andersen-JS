@@ -10,11 +10,11 @@ Array.prototype.myFilter = function (fn, context) {
 
 const createDebounceFunction = (fn, ms) => {
     let timeout;
-    return function () {
-        if (timeout) {
-            clearTimeout(timeout);
-        }
-
-        timeout = setTimeout(fn, ms);
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout( () => {
+            timeout = null;
+            fn(...args);
+        }, ms)
     }
 }
