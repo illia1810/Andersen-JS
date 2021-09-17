@@ -1,6 +1,6 @@
 class ElementInStack {
-    constructor(newElement, previosStack) {
-        this.newElement = newElement;
+    constructor(value, previosStack) {
+        this.value = value;
         this.previosStack = previosStack;
     }
 }
@@ -33,7 +33,7 @@ class Stack {
     }
     
     peek() {
-        return this.actualStack === null ? null : this.#actualStack.newElement;
+        return this.actualStack === null ? null : this.#actualStack.value;
     }
     
     isEmpty() {
@@ -43,7 +43,7 @@ class Stack {
     toArray() {
         let arr = [];
         function addStackElementToArray(stack) {
-            arr = [stack.newElement, ...arr];
+            arr = [stack.value, ...arr];
             if(stack.previosStack === null) return;
             else addStackElementToArray(stack.previosStack);
         }
